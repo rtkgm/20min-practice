@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Practice</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Code Practice</h1>
+  <p>お題を２０分くらいで書く練習</p>
+  <!-- <button id="btn">クリック</button>
+  <div id="output"></div> -->
+  <pre>
+    <code>
+      ① ユーザーごとの合計購入金額を計算し、
+      ② 合計金額が多い順に並べた配列を返してください。
+
+      const orders = [
+        { userId: 1, amount: 5000, status: "completed" },
+        { userId: 2, amount: 3000, status: "completed" },
+        { userId: 1, amount: 2000, status: "pending" },
+        { userId: 3, amount: 7000, status: "completed" },
+        { userId: 2, amount: 1000, status: "completed" }
+      ]
+    </code>
+  </pre>
+
+
+  <!-- <script src="js/main.js"></script> -->
+  <script>
+
+    const orders = [
+      { userId: 1, amount: 5000, status: "completed" },
+      { userId: 2, amount: 3000, status: "completed" },
+      { userId: 1, amount: 2000, status: "pending" },
+      { userId: 3, amount: 7000, status: "completed" },
+      { userId: 2, amount: 1000, status: "completed" }
+    ]
+
+    // ① completed だけ抽出
+    const completedOrders = []
+
+    for (const order of orders) {
+      if (order.status === "completed") {
+        completedOrders.push(order)
+      }
+    }
+    console.log(completedOrders)
+
+
+    // ② userId ごとに合計
+    const totals = {}
+
+    for (const order of completedOrders) {
+      const id = order.userId
+
+      if (!totals[id]) {
+        totals[id] = 0
+      }
+
+      totals[id] += order.amount
+    }
+    console.log(totals)
+
+
+    // ③ オブジェクト → 配列へ変換
+    const result = []
+
+    for (const [userId, total] of Object.entries(totals)) {
+      result.push({
+        userId: Number(userId),
+        total: total
+      })
+    }
+
+    // ④ 合計金額の降順にソート
+    result.sort((a, b) => b.total - a.total)
+
+    console.log(result)
+
+    
+    </script>
+</body>
+</html>
