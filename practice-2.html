@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Practice</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>問題①（ウォームアップ：抽出＋並び替え）</h1>
+  <p>お題を２０分くらいで書く練習</p>
+  <pre>
+    <code>
+      🎯 問題
+      active が true のユーザーだけ取得
+      age が高い順に並べる
+      name だけの配列を返す
+
+      const users = [
+        { id: 1, name: "Taro", isActive: true,  score: 80 },
+        { id: 2, name: "Hanako", isActive: false, score: 90 },
+        { id: 3, name: "Jiro", isActive: true,  score: 60 },
+        { id: 4, name: "Yuki", isActive: true,  score: 100 }
+      ];
+    </code>
+  </pre>
+
+
+  <!-- <script src="js/main.js"></script> -->
+  <script>
+
+    const users = [
+      { id: 1, name: "Taro", isActive: true,  score: 80 },
+      { id: 2, name: "Hanako", isActive: false, score: 90 },
+      { id: 3, name: "Jiro", isActive: true,  score: 60 },
+      { id: 4, name: "Yuki", isActive: true,  score: 100 }
+    ];
+
+    const result = []
+
+    for (const user of users) {
+      // ① isActive が　trueか
+      if (user.isActive === true) {
+        
+        // ② score が70以上か
+        if (user.score >= 70) {
+
+          // ③ name を配列に追加
+          result.push(user.name)
+        }
+      }
+    }
+
+    console.log(result)
+
+  </script>
+</body>
+</html>
