@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Practice</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Code Practice</h1>
+  <p>お題を２０分くらいで書く練習</p>
+  <pre>
+    <code>
+      次の条件を満たすユーザーの name だけを配列で返す 関数を作ってください。
+
+      const users = [
+        { id: 1, name: "Taro", score: 82, isActive: true },
+        { id: 2, name: "Hanako", score: 65, isActive: true },
+        { id: 3, name: "Ken", score: 90, isActive: false },
+        { id: 4, name: "Yuki", score: 75, isActive: true },
+        { id: 5, name: "Sato", score: 50, isActive: false }
+      ]
+
+      ▼条件
+      isActive が true
+      score が 70以上
+      score が高い順に並べる
+
+      ▼考え方
+      isActive が true の user を抜き出す
+      スコアが70以上の user を抜き出す
+      スコアが高い順にソートする
+      結果からnameを抜き出し、配列に入れる
+      配列を返す
+    </code>
+  </pre>
+
+
+  <!-- <script src="js/main.js"></script> -->
+  <script>
+
+    const users = [
+      { id: 1, name: "Taro", score: 82, isActive: true },
+      { id: 2, name: "Hanako", score: 65, isActive: true },
+      { id: 3, name: "Ken", score: 90, isActive: false },
+      { id: 4, name: "Yuki", score: 75, isActive: true },
+      { id: 5, name: "Sato", score: 50, isActive: false }
+    ]
+
+
+    const result = []
+
+    for (const user of users){
+      
+      // isActiveがtrue
+      if (user.isActive === true){
+      
+        // スコアが70以上
+        if (user.score >= 70){
+          result.push(user)
+        }
+      }
+    }
+    console.log(result)
+
+
+    // スコアが高い順にソートする
+    result.sort((a,b) => b.score - a.score)
+
+
+    //その後nameを取得して配列で返したい
+    const names = []
+    for (const user of result){
+      names.push(user.name)
+    }
+    console.log(names)
+
+  </script>
+
+</body>
+</html>

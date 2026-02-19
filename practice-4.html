@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Practice</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Code Practice</h1>
+  <p>お題を２０分くらいで書く練習</p>
+  <pre>
+    <code>
+        ECサイトの注文データがあります。
+
+        const orders = [
+            { id: 1, user: "Taro", total: 3000, status: "completed" },
+            { id: 2, user: "Hanako", total: 1500, status: "pending" },
+            { id: 3, user: "Taro", total: 2000, status: "completed" },
+            { id: 4, user: "Ken", total: 5000, status: "completed" },
+            { id: 5, user: "Hanako", total: 2500, status: "completed" }
+        ]
+      
+
+      ▼条件
+      🎯 要件
+        「completed」状態の注文のみ対象にして
+        各ユーザーごとの合計購入金額を計算し、
+        合計金額が高い順に
+        次の形式で返してください：
+
+        [
+            { user: "Ken", total: 5000 },
+            { user: "Taro", total: 5000 },
+            { user: "Hanako", total: 2500 }
+        ]
+
+      ▼考え方
+      completed を抽出する
+      ユーザーごとに合計する
+      合計した結果を配列に入れ
+      高い順にソートする
+
+      
+    </code>
+  </pre>
+
+
+  <!-- <script src="js/main.js"></script> -->
+  <script>
+    const orders = [
+      { id: 1, user: "Taro", total: 3000, status: "completed" },
+      { id: 2, user: "Hanako", total: 1500, status: "pending" },
+      { id: 3, user: "Taro", total: 2000, status: "completed" },
+      { id: 4, user: "Ken", total: 5000, status: "completed" },
+      { id: 5, user: "Hanako", total: 2500, status: "completed" }
+    ]
+
+
+    const totals = []
+
+    for (const order of orders) {
+        // completed を抜き出す
+        if(order.status === "completed") {
+
+            //合計を出す
+            if (totals[order.user]){
+                // すでに存在していれば足すう
+                totals[order.user] += order.total
+            } else {
+                // 存在していなければ新たに追加
+                totals[order.user] = order.total
+            }
+            
+        }
+    }
+    console.log(totals)
+
+    // 配列に入れる
+    const result = Object.entries(totals).map(([user, total]) => {
+        return {user:user, total:total}
+    })
+
+    result.sort((a,b) => b.total - a.total)
+
+    // return result
+
+    console.log(result)
+
+  </script>
+
+</body>
+</html>
